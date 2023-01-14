@@ -27,15 +27,19 @@ namespace ContosoUniversity.Pages.Students
             {
                 return NotFound();
             }
+            // howarj9 - raz2
+            //var student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
+            // The Include and ThenInclude methods cause the context to load the Student.Enrollments
+            // navigation property, and within each enrollment the Enrollment.Course navigation property.
+            Student = await _context.Students
+                .Include(s => s.Enrollments)
+                .ThenInclude(e => e.Course)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
-            var student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
-            if (student == null)
+            if (Student == null)
             {
                 return NotFound();
-            }
-            else 
-            {
-                Student = student;
             }
             return Page();
         }
