@@ -43,7 +43,8 @@ namespace ContosoUniversity
                 var services = scope.ServiceProvider;
 
                 var context = services.GetRequiredService<SchoolContext>();
-                context.Database.EnsureCreated();
+                // howarj9 - raz4
+                //context.Database.EnsureCreated();
                 // howarj9 - raz1
                 DbInitializer.Initialize(context);
             }
