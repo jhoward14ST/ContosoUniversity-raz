@@ -1,4 +1,3 @@
 # ContosoUniversity
 
-Jared Howard (howarj9) raz assignment repository
-raz2 branch test
+Jared Howard (howarj9) Razor Pages assignment repository
